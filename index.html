@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSEC Consultancy and Engineering</title>
+<meta name="description" content="CSEC BV offers strategic consulting, engineering, 3D printing expertise, medical device development and intellectual property services to technology companies.">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  @font-face { font-family: "Manrope"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/manrope-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Manrope"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/manrope-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Manrope"; font-weight: 800; font-style: normal; font-display: swap; src: url("fonts/manrope-latin-800-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Source Sans 3"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/source-sans-3-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Source Sans 3"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/source-sans-3-latin-600-normal.woff2") format("woff2"); }
+  /* Layout idea: one calm column on white, left-aligned, with the logo's
+     stepped blocks as the only ornament. Single light theme by choice. */
+  :root {
+    color-scheme: light;
+    --navy: #19649d;        /* logo wordmark */
+    --navy-deep: #0f3f66;   /* headings, footer */
+    --sky: #00aeef;
+    --lime: #8cc63f;
+    --green: #2bb673;
+    --ink: #1d2b38;
+    --muted: #55677a;
+    --paper: #ffffff;
+    --wash: #f2f7fb;        /* blue-biased neutral */
+    --line: #d9e4ee;
+    --font-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --measure: 62ch;
+    --gutter: clamp(20px, 5vw, 48px);
+    --wrap: 1080px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--navy); }
+  a:focus-visible, .button:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--navy-deep); text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; line-height: 1.2; }
+  h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
+  p { margin: 0; max-width: var(--measure); }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Header */
+  .site-header { border-bottom: 1px solid var(--line); background: var(--paper); }
+  .site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding-top: 18px; padding-bottom: 18px; }
+  .site-header img { height: 44px; width: auto; }
+  nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 28px; }
+  nav a { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; text-decoration: none; color: var(--navy-deep); padding: 6px 0; border-bottom: 2px solid transparent; }
+  nav a:hover { border-bottom-color: var(--lime); }
+
+  /* Hero */
+  .hero { background: var(--wash); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; padding-top: clamp(48px, 8vw, 88px); padding-bottom: clamp(48px, 8vw, 88px); }
+  .hero-text { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+  .hero p { font-size: 1.25rem; color: var(--muted); max-width: 54ch; }
+  .hero svg { width: clamp(150px, 22vw, 250px); height: auto; }
+  .button { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: 1rem; text-decoration: none; background: var(--navy); color: #fff; padding: 13px 24px; border-radius: 8px; }
+  .button:hover { background: var(--navy-deep); }
+
+  /* Sections */
+  section { padding: clamp(48px, 7vw, 80px) 0; }
+  .section-head { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+  .section-head p { color: var(--muted); }
+
+  .services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 36px 48px; }
+  .services li { display: flex; flex-direction: column; gap: 8px; padding-left: 20px; border-left: 4px solid var(--c); }
+  .services p { font-size: 1.05rem; }
+  .services ul { margin: 4px 0 0; padding-left: 1.1em; font-size: 1.05rem; }
+  .services ul li { display: list-item; border: 0; padding: 0; }
+
+  .about { background: var(--wash); }
+  .about-body { display: flex; flex-direction: column; gap: 18px; }
+
+  .terms-body { display: flex; flex-direction: column; gap: 16px; }
+
+  .contact { background: var(--navy-deep); color: #e6eff7; }
+  .contact h2 { color: #fff; }
+  .contact .section-head p { color: #c3d6e6; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px 40px; }
+  .contact dt { font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime); margin-bottom: 4px; }
+  .contact dd { margin: 0; }
+  .contact a { color: #fff; }
+
+  .portrait { display: inline-block; margin-top: 6px; border-radius: 50%; }
+  .portrait img { width: 96px; height: 96px; border-radius: 50%; border: 3px solid #fff; }
+  .portrait:hover img { border-color: var(--lime); }
+  .todo { background: #fff3c4; color: #5b4500; padding: 0 6px; border-radius: 4px; font-size: 0.95em; }
+
+  footer { background: var(--navy-deep); color: #a9c0d4; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.95rem; }
+  footer .wrap { padding-top: 20px; padding-bottom: 24px; }
+
+  @media (max-width: 640px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero svg { display: none; }
+    .site-header img { height: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#top" aria-label="CSEC home"><img src="csec-logo.png" alt="CSEC" width="365" height="120"></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#terms">Terms</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <h1>Consultancy and engineering for 3D printing, medical devices and IP</h1>
+        <p>CSEC helps technology companies make sound strategic and technical decisions, from a first concept to a protected, manufacturable product.</p>
+        <a class="button" href="#contact">Get in touch</a>
+      </div>
+      <!-- Stepped blocks, echoing the logo mark -->
+      <svg viewBox="0 0 250 250" aria-hidden="true">
+        <rect x="100" y="0"   width="50" height="50" rx="8" fill="#2bb673"/>
+        <rect x="25"  y="50"  width="50" height="50" rx="8" fill="#00aeef"/>
+        <rect x="100" y="60"  width="50" height="50" rx="8" fill="#8cc63f"/>
+        <rect x="175" y="50"  width="50" height="50" rx="8" fill="#00aeef"/>
+        <rect x="0"   y="125" width="100" height="50" rx="8" fill="#19649d"/>
+        <rect x="110" y="110" width="140" height="50" rx="8" fill="#19649d"/>
+        <rect x="110" y="170" width="50" height="50" rx="8" fill="#19649d"/>
+        <rect x="170" y="170" width="50" height="50" rx="8" fill="#00aeef"/>
+        <rect x="45"  y="185" width="50" height="50" rx="8" fill="#2bb673"/>
+        <rect x="110" y="230" width="50" height="20" rx="8" fill="#8cc63f"/>
+      </svg>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Services</h2>
+        <p>Independent advice and hands-on engineering for companies that build innovative products.</p>
+      </div>
+      <ul class="services">
+        <li style="--c: var(--navy)">
+          <h3>Strategic consulting</h3>
+          <p>Advice on technology choices, product roadmaps, business strategy and IP protection, based on years of experience building and leading technology companies.</p>
+        </li>
+        <li style="--c: var(--sky)">
+          <h3>Engineering</h3>
+          <p>Design and development support for demanding products: concept work, detailed design, prototyping and translation to production. In-house prototyping capabilities allow for short hardware development cycles.</p>
+        </li>
+        <li style="--c: var(--lime)">
+          <h3>3D printing expertise</h3>
+          <p>In-depth knowledge of additive manufacturing, including metal laser powder bed fusion: process selection, design for 3D printing and industrialisation.</p>
+        </li>
+        <li style="--c: var(--green)">
+          <h3>Medical device development</h3>
+          <p>Guidance through the development of medical devices, from clinical need and design to the path towards market approval. Experience with standard and patient-specific medical devices in all risk classes and through various regulatory pathways (CE/MDR, FDA 510(k)).</p>
+        </li>
+        <li style="--c: var(--navy)">
+          <h3>Intellectual property</h3>
+          <p>Support in building and protecting your technology position.</p>
+          <ul>
+            <li>Prior art search</li>
+            <li>Patent drafting</li>
+            <li>IP strategy</li>
+            <li>Licensing</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="about-body">
+        <p>CSEC is the consultancy and engineering firm of Peter Mercelis.</p>
+        <p>Peter holds an MSc and a PhD in engineering from KU Leuven. In 2008 he co-founded LayerWise, a company specialised in metal 3D printing for medical, dental and industrial applications, and led it as CEO.</p>
+        <p>Since 2014 Peter has co-founded and supported several 3D printing and medtech startups. He is a named inventor on 15 patent families in various technical and medical domains. <a href="https://patents.google.com/?inventor=Peter+Mercelis">View the patents and patent applications on Google Patents</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>General terms and conditions</h2>
+      </div>
+      <div class="terms-body">
+        <p>All services are provided under the general terms and conditions of CSEC BV. They are governed by Belgian law.</p>
+        <p><a href="csec-terms.pdf">Download the general terms and conditions (PDF, Dutch and English)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Tell me briefly what you are working on and how we could collaborate.</p>
+      </div>
+      <dl>
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:info@csec.be">info@csec.be</a></dd>
+        </div>
+        <div>
+          <dt>Address</dt>
+          <dd>CSEC BV<br>Mastbos 26<br>2440 Geel<br>Belgium</dd>
+        </div>
+        <div>
+          <dt>Company number</dt>
+          <dd>BE 0691.784.994</dd>
+        </div>
+        <div>
+          <dt>LinkedIn</dt>
+          <dd><a class="portrait" href="https://www.linkedin.com/in/peter-mercelis-1624358/" aria-label="Peter Mercelis on LinkedIn"><img src="peter-mercelis.jpg" alt="Peter Mercelis" width="120" height="120"></a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 CSEC BV</div>
+</footer>
+
+</body>
+</html>
